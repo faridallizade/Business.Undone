@@ -1,0 +1,44 @@
+﻿@using Business.P_1.ViewModels;
+@model HomeVm;
+<div class="container-fluid">
+    <div style="margin-left:40%">
+        <a asp-action="Create" asp-controller="Blog" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model.Blogs)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.ImageUrl</td>
+                    <td>
+                        <a asp-route-id="@item.Id" asp-action="Update" asp-controller="Blog" class="btn btn-warning">Update</a>
+                        <a asp-route-id="@item.Id" asp-action="Index" asp-controller="Blog" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
